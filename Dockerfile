@@ -2,8 +2,9 @@ FROM golang:stretch as builder
 
 ADD ./main.go /go/src/app/
 
-RUN cd /go/src/app && go build -o goapp
-
+RUN cd /go/src/app && \
+    go mod init cenarioweb/hello-world && \
+    go build -o goapp
 
 FROM scratch
 
